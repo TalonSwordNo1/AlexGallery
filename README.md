@@ -3,6 +3,7 @@ AlexGallery is a application of images gallery and image editor which explore lo
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
 
+
 # Features
  - local folder explorer, list folders in tree view
  - when choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
@@ -34,8 +35,15 @@ and we can use node.js fs module to accomplish, and nw make node.js and html int
  - the app only run in Mac so far, and work fine with my Mac, so I am not sure if it work ok in windows as well
  - the app will create folder $HOME/AlexGallery to store thumbnail of the images you explore
 
+# Screenshot
+![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
+![screenshot2](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot2.png)
+![screenshot3](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot3.png)
+![screenshot4](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot4.png)
+![screenshot5](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot5.png)
+
 # Libraries dependencies
- - [lwip](https://github.com/EyalAr/lwip) Light Weight Image Processor for NodeJS 
+ - [lwip](https://github.com/EyalAr/lwip) Light Weight Image Processor for NodeJS
  - [angular-bootstrap-nav-tree](https://github.com/nickperkinslondon/angular-bootstrap-nav-tree) An AngularJS directive that creates a Tree based on a Bootstrap "nav" list.
  - [ngGallery](https://github.com/jkuri/ngGallery) AngularJS Image Gallery Slideshow
  - [cropper](https://github.com/fengyuanchen/cropper) A simple jQuery image cropping plugin.
