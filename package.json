@@ -1,0 +1,24 @@
+{
+  "name": "AlexGallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+  },
+  "author": "hcnode",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^0.23.1",
+    "lodash": "^3.10.1",
+    "lwip": "0.0.7",
+    "q": "^1.4.1"
+  },
+  "homepage": "https://github.com/hcnode/AlexGallery",
+  "window": {
+    "title": "Alex Gallery",
+    "icon": "alex.png",
+    "toolbar": true,
+    "width": 1366,
+    "height": 720
+  }
+}

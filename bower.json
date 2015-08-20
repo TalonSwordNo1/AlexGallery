@@ -1,0 +1,27 @@
+{
+  "name": "AlexGallery",
+  "main": "index.html",
+  "version": "0.0.0",
+  "authors": [
+    "hcnode <7372@163.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "~1.4.3",
+    "angular-bootstrap-nav-tree": "*",
+    "font-awesome": "~4.4.0",
+    "cropper": "~0.10.1",
+    "ngGallery": "git://github.com/hcnode/nw-ng-gallery",
+    "purl": "~2.3.1",
+    "bower": "*",
+    "install": "~1.0.4",
+    "seiyria-bootstrap-slider": "~5.0.11"
+  }
+}

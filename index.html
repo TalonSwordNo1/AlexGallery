@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/ngGallery/src/css/screen.css">
+    <link rel="stylesheet" href="bower_components/ngGallery/src/css/ngGallery.css">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="bower_components/ngGallery/src/js/ngGallery.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <script src="bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css">
+
+    <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+    <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body ng-controller="parentCtr">
+    <div class="github">
+        <span class="" style="padding: 10px;" >
+            <div class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Alex Gallery <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="https://github.com/hcnode/AlexGallery" target="_blank">
+                            <i class="fa fa-github"></i>&nbsp;Github
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"  data-toggle="modal" data-target="#aboutAppModal">
+                            About AlexGallery
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </span>
+    </div>
+    <div style="position: absolute;top:50px;right:3px;z-index: 999" ng-show="currItems && currItems.length > 0">
+        <button class="btn btn-primary" ng-click="refresh()">
+            <i class="fa fa-refresh fa-lg"></i> 刷新</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#batchConfirmModal">
+            <i class="fa fa-tasks fa-lg"></i> 批量处理</button>
+    </div>
+    <div class="progress my-progress" ng-if="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
+            <span class="sr-only" style="position: inherit">{{current}}/{{total}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <ol class="breadcrumb" style="margin: 10px;" ng-if="currentPath">
+            <li ng-repeat="item in getPaths()" ng-if="item != ''">{{item}}</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-3 content_tree" ng-controller="AbnController" >
+
+            <span ng-if="doing_async">...loading...</span>
+
+            <abn-tree
+                    tree-data="my_data"
+                    tree-control="my_tree"
+                    ng-click="treeClick()"
+                    icon-expand="fa fa-folder"
+                    icon-collapse="fa fa-folder-open" ></abn-tree>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 preview" ng-controller="CtrlGallery as ctrl">
+            <ng-gallery images="ctrl.images"></ng-gallery>
+        </div>
+    </div>
+    <div class="overlay" ng-show="processing"></div>
+    <div class="processing" ng-show="processing" style="color:white;font-size: 28px">
+        <i class="fa fa-refresh fa-spin" ></i> Processing...
+        <span ng-show="batchProgress">{{batchProgress}} / {{batchTotal}}</span>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="batchConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">批量处理</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-9">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsResizeType0" ng-model="optionsResizeType" value="0">
+                                        按等比例缩放
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsResizeType1" ng-model="optionsResizeType" value="1">
+                                        按固定长宽等比例缩放
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsResizeType2" ng-model="optionsResizeType" value="2">
+                                        按长边的长度等比缩放
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-show="optionsResizeType == 0">
+                            <label for="sliderSizeRatio" class="col-sm-3 control-label">缩放倍数</label>
+                            <div class="col-sm-9">
+                                <input id="sliderSizeRatio" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="optionsResizeType == 2">
+                            <label for="inputLonger" class="col-sm-3 control-label">长边</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputLonger" ng-model="batchLongerSize" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="optionsResizeType == 1">
+                            <label for="inputWidth" class="col-sm-3 control-label">宽</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputWidth" ng-change="inputSizeChange('width')" ng-model="batchWidth" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="optionsResizeType == 1">
+                            <label for="inputHeight" class="col-sm-3 control-label">高</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputHeight" ng-change="inputSizeChange('height')" ng-model="batchHeight" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sliderEffect" class="col-sm-3 control-label">亮度</label>
+                            <div class="col-sm-9">
+                                <input id="sliderEffect" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="outputPrefix" class="col-sm-3 control-label">输出文件前缀</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="outputPrefix"  ng-model="outputPrefix" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="batch()">执行</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="aboutAppModal" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">About AlexGallery</h4>
+                </div>
+                <div class="modal-body">
+                    I make this for my newborn son Alex.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/fsutil.js"></script>
+<script src="js/main.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/foldertree.js"></script>
+<script>
+
+</script>
+</body>
+</html>

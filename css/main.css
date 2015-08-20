@@ -1,0 +1,67 @@
+.content_tree {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    height: auto;
+}
+.preview {
+    position: absolute;
+    top: 50px;
+    left: 330px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    height: auto;
+    width:75%;
+    padding: 5px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+.my-progress {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    position: absolute;
+    top: 20px;
+    left: 40%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    z-index: 9999;
+}
+
+.processing {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    text-align: center;
+}
+
+.githublnk {
+    color: #ffffff;
+    font-size: 14px;
+}
+.ico-github{
+    position: relative;
+    top: 3px;
+}
+
+.github {
+    position: absolute;
+    z-index: 999;
+    right: 3px;
+    top: 13px;
+}

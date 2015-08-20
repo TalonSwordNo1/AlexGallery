@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html ng-app="editorApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/cropper/dist/cropper.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/cropper/dist/cropper.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/purl/purl.js"></script>
+    <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+    <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <script>
+    </script>
+</head>
+<body ng-controller="editorCtr">
+<div class="container">
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+        <div class="col-md-9 docs-buttons">
+            <div class="btn-group">
+                <a class="btn btn-default {{currentMode == 'move' ? 'active' : ''}}" href="#" ng-click="action.setMoveMode();"><i class="fa fa-arrows"></i></a>
+                <a class="btn btn-default {{currentMode == 'crop' ? 'active' : ''}}" href="#" ng-click="action.setCropMode();"><i class="fa fa-crop"></i></a>
+                <a class="btn btn-default {{(currentMode == 'zoom' && zoomType == 'in') ? 'active' : ''}}" href="#" ng-click="action.zoom(0.1);"><i class="fa fa-search-plus"></i></a>
+                <a class="btn btn-default {{(currentMode == 'zoom' && zoomType == 'out') ? 'active' : ''}}" href="#" ng-click="action.zoom(-0.1);"><i class="fa fa-search-minus"></i></a>
+                <a class="btn btn-default {{(currentMode == 'rotate' && rotateType == 'left') ? 'active' : ''}}" href="#" ng-click="action.rotate(-90);"><i class="fa fa-rotate-left"></i></a>
+                <a class="btn btn-default {{(currentMode == 'rotate' && rotateType == 'right') ? 'active' : ''}}" href="#" ng-click="action.rotate(90);"><i class="fa fa-rotate-right"></i></a>
+                <a class="btn btn-default {{currentMode == 'resize' ? 'active' : ''}}" href="#" ng-click="action.resize();"><i class="fa fa-arrows-alt"></i></a>
+            </div>
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-primary" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-filter"></i>&nbsp;滤镜
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li><a href="#" ng-click="action.setEffect('blur')">Blur</a></li>
+                        <li><a href="#" ng-click="action.setEffect('sharpen')">Sharpen</a></li>
+                        <li><a href="#" ng-click="action.setEffect('lighten')">Lighten</a></li>
+                        <li><a href="#" ng-click="action.setEffect('darken')">Darken</a></li>
+                        <li><a href="#" ng-click="action.setEffect('fade')">Opacity</a></li>
+                        <li><a href="#" ng-click="action.setEffect('saturate')">Saturate</a></li>
+                        <li><a href="#" ng-click="action.setEffect('hue')">Hue</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a class="btn btn-default" href="#" ng-click="action.reset();">Reset</a>
+                <a class="btn btn-default" href="#" ng-click="action.save();">保存</a>
+            </div>
+            <div class="editAlert" ng-if="err" style="display: none">
+                <div class="alert alert-danger " role="alert">
+                    <i class="fa fa-warning" style="margin-right: 5px;"></i>{{err}}
+                </div>
+            </div>
+            <div class="editAlert" ng-if="msg" style="display: none">
+                <div class="alert alert-info " role="alert">
+                    <i class="fa fa-info-circle" style="margin-right: 5px;"></i>{{msg}}
+                </div>
+            </div>
+        </div>
+        <input id="txtSaveAs" class="hidden" type="file" nwsaveas="" />
+
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="img-container">
+
+            </div>
+        </div>
+        <div class="col-md-3" ng-show="currentMode == 'crop'">
+            <div class="docs-preview clearfix">
+                <div class="img-preview preview-lg"></div>
+            </div>
+            <a class="btn btn-default" href="#" ng-click="crop()">Process</a>
+        </div>
+        <div class="col-md-3" ng-show="currentMode == 'effect'">
+            <div class="alert alert-info" role="alert">Set {{effectType}} value:{{effectValue}}</div>
+            <form class="form-horizontal" style="margin-left: 10px;">
+                <input id="sliderEffect"
+                       type="text">
+            </form>
+        </div>
+        <div class="col-md-3" ng-show="currentMode == 'resize'">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <label>
+                            <input type="checkbox" ng-model="ratioResize" ng-change="action.resizeCalHeight()"> 按比例
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputWidth" class="col-sm-2 control-label">Width</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-keyup="action.resizeCalHeight()" ng-model="resizeWidth" id="inputWidth" placeholder="Width">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputHeight" class="col-sm-2 control-label">Height</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-keyup="action.resizeCalWidth()" ng-model="resizeHeight" id="inputHeight" placeholder="Height">
+                    </div>
+                </div>
+            </form>
+            <a class="btn btn-default" href="#" ng-click="resize()">Process</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="overlay" ng-show="processing"></div>
+<div class="processing" ng-show="processing" style="color:white;font-size: 28px">
+        <i class="fa fa-refresh fa-spin" ></i> Processing...
+</div>
+</body>
+<script src="js/editor.js"></script>
+</html>
