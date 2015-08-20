@@ -61,7 +61,7 @@ module.exports = {
 		}
 	},
 	getPreview : function (imageUrl, cp) {
-		var fileName = new Date().valueOf() + "." +  (/\.([^\.]+)/.test(imageUrl) && RegExp.$1);
+		var fileName = new Date().valueOf() + "." +  (/\.([^\.]+)$/.test(imageUrl) && RegExp.$1);
 		var preview = fsutil.getPreviewPath() + fileName;
 		cp && fs.copySync(imageUrl, preview);
 		return preview;

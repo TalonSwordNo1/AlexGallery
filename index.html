@@ -25,32 +25,29 @@
 
 </head>
 <body ng-controller="parentCtr">
-    <div class="github">
-        <span class="" style="padding: 10px;" >
-            <div class="btn-group">
-                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Alex Gallery <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="https://github.com/hcnode/AlexGallery" target="_blank">
-                            <i class="fa fa-github"></i>&nbsp;Github
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank"  data-toggle="modal" data-target="#aboutAppModal">
-                            About AlexGallery
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </span>
-    </div>
-    <div style="position: absolute;top:50px;right:3px;z-index: 999" ng-show="currItems && currItems.length > 0">
+    <div style="position: absolute;top:50px;right:3px;z-index: 999" >
+        <button class="btn btn-primary" data-toggle="modal" data-target="#batchConfirmModal" ng-show="currItems && currItems.length > 0">
+            <i class="fa fa-tasks fa-lg"></i> Batch</button>
+
         <button class="btn btn-primary" ng-click="refresh()">
-            <i class="fa fa-refresh fa-lg"></i> 刷新</button>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#batchConfirmModal">
-            <i class="fa fa-tasks fa-lg"></i> 批量处理</button>
+            <i class="fa fa-refresh fa-lg"></i> Refresh</button>
+        <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alex Gallery <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="https://github.com/hcnode/AlexGallery" target="_blank">
+                        <i class="fa fa-github"></i>&nbsp;Github
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank"  data-toggle="modal" data-target="#aboutAppModal">
+                        About AlexGallery
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="progress my-progress" ng-if="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
@@ -92,7 +89,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">批量处理</h4>
+                    <h4 class="modal-title" id="myModalLabel">Batch</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
@@ -102,56 +99,56 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="optionsResizeType0" ng-model="optionsResizeType" value="0">
-                                        按等比例缩放
+                                        Scale ratio (按等比例缩放)
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="optionsResizeType1" ng-model="optionsResizeType" value="1">
-                                        按固定长宽等比例缩放
+                                        Scale by Fixed width or height (按固定长宽等比例缩放)
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="optionsResizeType2" ng-model="optionsResizeType" value="2">
-                                        按长边的长度等比缩放
+                                        Scale by Longer side (按长边的长度等比缩放)
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group" ng-show="optionsResizeType == 0">
-                            <label for="sliderSizeRatio" class="col-sm-3 control-label">缩放倍数</label>
+                            <label for="sliderSizeRatio" class="col-sm-3 control-label">Ratio</label>
                             <div class="col-sm-9">
                                 <input id="sliderSizeRatio" type="text">
                             </div>
                         </div>
                         <div class="form-group" ng-show="optionsResizeType == 2">
-                            <label for="inputLonger" class="col-sm-3 control-label">长边</label>
+                            <label for="inputLonger" class="col-sm-3 control-label">size</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="inputLonger" ng-model="batchLongerSize" placeholder="">
                             </div>
                         </div>
                         <div class="form-group" ng-show="optionsResizeType == 1">
-                            <label for="inputWidth" class="col-sm-3 control-label">宽</label>
+                            <label for="inputWidth" class="col-sm-3 control-label">width</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="inputWidth" ng-change="inputSizeChange('width')" ng-model="batchWidth" placeholder="">
                             </div>
                         </div>
                         <div class="form-group" ng-show="optionsResizeType == 1">
-                            <label for="inputHeight" class="col-sm-3 control-label">高</label>
+                            <label for="inputHeight" class="col-sm-3 control-label">height</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="inputHeight" ng-change="inputSizeChange('height')" ng-model="batchHeight" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sliderEffect" class="col-sm-3 control-label">亮度</label>
+                            <label for="sliderEffect" class="col-sm-3 control-label">lighten</label>
                             <div class="col-sm-9">
                                 <input id="sliderEffect" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="outputPrefix" class="col-sm-3 control-label">输出文件前缀</label>
+                            <label for="outputPrefix" class="col-sm-3 control-label">output prefix</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="outputPrefix"  ng-model="outputPrefix" placeholder="">
                             </div>
@@ -159,8 +156,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="batch()">执行</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="batch()">Execute</button>
                 </div>
             </div>
         </div>
@@ -174,7 +171,7 @@
                     <h4 class="modal-title">About AlexGallery</h4>
                 </div>
                 <div class="modal-body">
-                    I make this for my newborn son Alex.
+                    As you know, images tools in Mac sucks, so I make this app and name it by my newborn boy's name.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

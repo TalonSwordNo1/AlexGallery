@@ -18,7 +18,7 @@
     "angular-bootstrap-nav-tree": "*",
     "font-awesome": "~4.4.0",
     "cropper": "~0.10.1",
-    "ngGallery": "git://github.com/hcnode/nw-ng-gallery",
+    "ngGallery": "git://github.com/hcnode/ngGallery",
     "purl": "~2.3.1",
     "bower": "*",
     "install": "~1.0.4",

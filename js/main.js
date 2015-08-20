@@ -23,11 +23,14 @@ var app = angular.module("app", deps).controller("parentCtr",
 									description: item.name
 								};
 
-								$scope.progress = Math.round(i / items.length * 100);
-								if ($scope.progress >= 100) $scope.progress = false;
-								$scope.current = i;
-								$scope.$broadcast("showImageFromParent", image);
+								if(path == $scope.currentPath) {
+									$scope.progress = Math.round(i / items.length * 100);
+									if ($scope.progress >= 100) $scope.progress = false;
+									$scope.current = i;
+									$scope.$broadcast("showImageFromParent", image);
+								}
 							}
+
 							if ((clone.length > 0 && path == $scope.currentPath) && !$scope.batchProcessing) {
 								callee.call(this, clone.shift());
 							}
@@ -47,8 +50,11 @@ var app = angular.module("app", deps).controller("parentCtr",
 			});
 		$scope.$on("showPath",
 			function (event, msg) {
-				$scope.currentPath = msg;
-				$scope.$broadcast("cleanImage", msg);
+				$timeout(function () {
+					$scope.currentPath = msg;
+					$scope.progress = false;
+					$scope.$broadcast("cleanImage", msg);
+				});
 			});
 
 		$scope.getPaths = function () {
