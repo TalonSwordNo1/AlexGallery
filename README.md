@@ -4,15 +4,15 @@
 
 # Overview
 
-AlexGallery is an application of images gallery and image editor which explore local images and photos and edit them.
+AlexGallery is an application of images gallery and image editor which can explore local images and photos.
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
 
 
 ## Features
 
- - local folder explorer, list folders in tree view
- - when choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
+ - Local folder explorer, list folders in tree view
+ - When choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
  - Batch images with batch manipulates including resize, lighten, and with three resize modes
  - Image gallery slide mode
  - Image editor, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
