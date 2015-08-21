@@ -17,7 +17,7 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
  - Image gallery slide mode
  - Image editor, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
 
-## About [lwip
+## About lwip
 
 [lwip](https://github.com/EyalAr/lwip) is an awesome library, I have no idea to make an image app util I first time read about it.
 thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https://github.com/EyalAr)
