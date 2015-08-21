@@ -82,10 +82,6 @@ var app = angular.module("app", deps).controller("parentCtr",
 					side = "longerSide";
 					break;
 			}
-			console.log(value + "");
-			console.log(width + "");
-			console.log($scope.optionsResizeType + "");
-
 			require("./js/fsutil").batch({
 				items : items,
 				value : value,

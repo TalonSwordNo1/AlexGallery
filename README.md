@@ -1,23 +1,31 @@
-# AlexGallery
+![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
+
+[中文版](http://hcnode.github.io/2015/08/21/alexgallery/)
+
+# Overview
+
 AlexGallery is a application of images gallery and image editor which explore local images and photos and edit them.
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
 
 
-# Features
+## Features
+
  - local folder explorer, list folders in tree view
  - when choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
  - Batch images with batch manipulates including resize, lighten, and with three resize modes
- - Image preview mode
+ - Image gallery slide mode
  - Image editor, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
 
-# Why use [nw](https://github.com/nwjs/nw.js)?
-when explore or edit local images, it used to use file system library to read or write the image files,
-and we can use node.js fs module to accomplish, and nw make node.js and html into desktop application, it is cool and that is why I use nw.
+## About [lwip
+
+[lwip](https://github.com/EyalAr/lwip) is an awesome library, I have no idea to make an image app util I first time read about it.
+thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https://github.com/EyalAr)
 
 # Usage
  
- - suppose you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower), if not then run `npm install nw bower -g`
+ - suppose you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
+ if not then run `npm install nw bower -g`
  - clone Repo `git clone https://github.com/hcnode/AlexGallery` and `cd AlexGallery`
  - install node.js dependencies
 `npm install`
@@ -33,9 +41,11 @@ and we can use node.js fs module to accomplish, and nw make node.js and html int
 
 # Notice
  - the app only run in Mac so far, and work fine with my Mac, so I am not sure if it work ok in windows as well
- - the app will create folder $HOME/AlexGallery to store thumbnail of the images you explore
+ - the app will create folder $HOME/AlexGallery to store thumbnail of the images you explore, and nothing else will do with you pc
+ - when first time enter an images folder, there will generate thumbnail of the images by size max 200px, and save them to the
+ $HOME/AlexGallery/thumb which mention above, so it will need some time to show the thumbnails at the first time you enter the folder
 
-# Screenshot
+# Screenshots
 ![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
 ![screenshot2](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot2.png)
 ![screenshot3](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot3.png)
