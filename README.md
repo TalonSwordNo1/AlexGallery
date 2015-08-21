@@ -4,7 +4,7 @@
 
 # Overview
 
-AlexGallery is a application of images gallery and image editor which explore local images and photos and edit them.
+AlexGallery is an application of images gallery and image editor which explore local images and photos and edit them.
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
 
