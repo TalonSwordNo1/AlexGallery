@@ -1,6 +1,6 @@
 ![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
 
-[中文版](http://hcnode.github.io/2015/08/21/alexgallery/)
+[中文版README](http://hcnode.github.io/2015/08/21/alexgallery/)
 
 # Overview
 
