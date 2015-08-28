@@ -4,18 +4,18 @@
 
 # Overview
 
-AlexGallery is an application of images gallery and image editor which can explore local images and photos.
+AlexGallery is an application of images gallery and image processing which can browse local images and photos.
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
 
 
 ## Features
 
- - Local folder explorer, list folders in tree view
+ - Local folder browser, list folders in tree view
  - When choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
  - Batch images with batch manipulates including resize, lighten, and with three resize modes
- - Image gallery slide mode
- - Image editor, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
+ - Image gallery slider mode
+ - Image processing, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
 
 ## About lwip
 
@@ -24,7 +24,7 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
 
 # Usage
  
- - suppose you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
+ - assume you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
  if not then run `npm install nw bower -g`
  - clone Repo `git clone https://github.com/hcnode/AlexGallery` and `cd AlexGallery`
  - install node.js dependencies
