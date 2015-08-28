@@ -19,7 +19,7 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
 
 ## About lwip
 
-[lwip](https://github.com/EyalAr/lwip) is an awesome library, I have no idea to make an image app util I first time read about it.
+[lwip](https://github.com/EyalAr/lwip) is an awesome library, I have no idea to make an image app until I read it.
 thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https://github.com/EyalAr)
 
 # Usage
