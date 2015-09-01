@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "hcnode",
   "license": "MIT",
   "dependencies": {
