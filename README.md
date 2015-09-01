@@ -1,4 +1,4 @@
-![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
+![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot1.png)
 
 [中文版README](http://hcnode.github.io/2015/08/21/alexgallery/)
 
@@ -52,11 +52,11 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
  $HOME/AlexGallery/thumb which mention above, so it will need some time to show the thumbnails at the first time you enter the folder
 
 # Screenshots
-![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot1.png)
-![screenshot2](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot2.png)
-![screenshot3](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot3.png)
-![screenshot4](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot4.png)
-![screenshot5](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshot5.png)
+![screenshot1](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot1.png)
+![screenshot2](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot2.png)
+![screenshot3](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot3.png)
+![screenshot4](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot4.png)
+![screenshot5](https://raw.githubusercontent.com/hcnode/AlexGallery/master/screenshots/screenshot5.png)
 
 # Libraries dependencies
  - [lwip](https://github.com/EyalAr/lwip) Light Weight Image Processor for NodeJS
