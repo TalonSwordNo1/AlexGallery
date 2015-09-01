@@ -23,7 +23,7 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
 thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https://github.com/EyalAr)
 
 # Usage
- **run source code with nw**
+**run source code with nw**
  - assume you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
  if not then run `npm install nw bower -g`
  - clone Repo `git clone https://github.com/hcnode/AlexGallery` and `cd AlexGallery`
@@ -39,7 +39,7 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
 	 - build it `nw-gyp build`
  - back to root of app and run `nw` to launch the application
 
- **download app package(Mac only)**
+**download app package(Mac only)**
  - [download](https://github.com/hcnode/AlexGallery/releases/download/AlexGallery-v1.0.0/AlexGallery.zip) the package
  - unzip the zip file
  - launch the app
