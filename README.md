@@ -44,6 +44,11 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
  - unzip the zip file
  - launch the app
 
+# build
+
+`npm install nwbuild -g`
+`nwbuild -p osx64 -v v0.12.3 -f /path/to/app`
+
 
 # Notice
  - the app only run in Mac so far, and work fine with my Mac, so I am not sure if it work ok in windows as well
