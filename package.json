@@ -12,6 +12,7 @@
     "lwip": "0.0.7",
     "q": "^1.4.1"
   },
+  "repository" : "https://github.com/hcnode/AlexGallery.git",
   "homepage": "https://github.com/hcnode/AlexGallery",
   "window": {
     "title": "Alex Gallery",
