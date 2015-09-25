@@ -47,6 +47,7 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
 # build
 
 `npm install nwbuild -g`
+
 `nwbuild -p osx64 -v v0.12.3 -f /path/to/app`
 
 
