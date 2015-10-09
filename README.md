@@ -2,8 +2,6 @@
 
 [中文版README](http://hcnode.github.io/2015/08/21/alexgallery/)
 
-# Overview
-
 AlexGallery is an application of images gallery and image processing which can browse local images and photos.
 actually AlexGallery is a web application, because it is built by pure html.
 but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
