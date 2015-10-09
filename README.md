@@ -17,14 +17,9 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
  - Image gallery slider mode
  - Image processing, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
 
-## About lwip
-
-[lwip](https://github.com/EyalAr/lwip) is an awesome library, I have no idea to make an image app until I read it.
-thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https://github.com/EyalAr)
-
 # Usage
 **run source code with nw**
- - assume you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
+ - suppose you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
  if not then run `npm install nw bower -g`
  - clone Repo `git clone https://github.com/hcnode/AlexGallery` and `cd AlexGallery`
  - install node.js dependencies
@@ -72,6 +67,6 @@ thanks [lwip](https://github.com/EyalAr/lwip) and the author [Eyal Arubas](https
  - [seiyria-bootstrap-slider](https://github.com/seiyria/bootstrap-slider) A complete rewrite of the original bootstrap-slider by Stefan Petre.
  - [font-awesome](https://github.com/FortAwesome/Font-Awesome) The iconic font and CSS toolkit
 
-# About AlexGallery
+# About 
  As you know, images tools in Mac sucks, so I make this app and name it by my newborn boy's name.
 
