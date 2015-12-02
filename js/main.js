@@ -3,6 +3,16 @@ var deps = ['angularBootstrapNavTree','jkuri.gallery'];
 if (angular.version.full.indexOf("1.2") >= 0) {
 	deps.push('ngAnimate');
 }
+
+var gui = require('nw.gui');
+win = gui.Window.get();
+var nativeMenuBar = new gui.Menu({ type: "menubar" });
+try {
+	nativeMenuBar.createMacBuiltin("AlexGallery");
+	win.menu = nativeMenuBar;
+} catch (ex) {
+	console.log(ex.message);
+}
 var app = angular.module("app", deps).controller("parentCtr",
 	function ($scope, $timeout) {
 		function resize(items, path) {
@@ -60,6 +70,49 @@ var app = angular.module("app", deps).controller("parentCtr",
 		$scope.getPaths = function () {
 			return ($scope.currentPath && $scope.currentPath.split("/") || ["/"]);
 		};
+		$scope.selectMode = false;
+		$scope.setSelectMode = function () {
+			$scope.selectMode = !$scope.selectMode;
+			$scope.$broadcast("selectMode", $scope.selectMode);
+		};
+		$scope.save = function(){
+			$("#txtSaveAs").click();
+			$("#txtSaveAs").on("change", function () {
+				var path = $("#txtSaveAs").val();
+				if(path) {
+					$scope.savePath = path;
+					$scope.$broadcast("getSelectFile");
+				}
+			})
+		};
+		$scope.$on("saveSelectFile",
+			function (event, msg) {
+				var files = [];
+				for(var img in msg){
+					if(msg[img]){
+						files.push(img);
+					}
+				}
+				$scope.progress = files.length;
+				var i = 0;
+				(function () {
+					var callee = arguments.callee;
+					if(files.length > 0){
+						var file = files.shift();
+						$scope.current = i;
+						i ++;
+						require("fs-extra").copy(file, $scope.savePath + (/(\/[^\/]+?)$/.test(file) && RegExp.$1), function (err) {
+							if(!err){
+								callee();
+							}else{
+								$scope.progress = false;
+							}
+						});
+					}else{
+						$scope.progress = false;
+					}
+				})();
+			});
 		$scope.batch = function () {
 			var items = $scope.currItems;
 			var width = $scope.batchWidth;

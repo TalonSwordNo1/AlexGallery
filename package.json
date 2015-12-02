@@ -17,7 +17,7 @@
   "window": {
     "title": "Alex Gallery",
     "icon": "alex.png",
-    "toolbar": false,
+    "toolbar": true,
     "width": 1366,
     "height": 720
   }

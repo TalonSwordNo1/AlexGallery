@@ -26,10 +26,14 @@
 </head>
 <body ng-controller="parentCtr">
     <div style="position: absolute;top:50px;right:3px;z-index: 999" >
+        <button class="btn btn-default" data-toggle="modal" ng-show="selectMode" ng-click="save()">
+            <i class="fa fa-copy fa-lg"></i> Copy</button>
+        <button class="btn btn-default" data-toggle="modal" ng-click="setSelectMode()">
+            <i class="fa fa-check-square{{ selectMode?'-o':'' }} fa-lg"></i> Select Mode</button>
         <button class="btn btn-primary" data-toggle="modal" data-target="#batchConfirmModal" ng-show="currItems && currItems.length > 0">
             <i class="fa fa-tasks fa-lg"></i> Batch</button>
 
-        <button class="btn btn-primary" ng-click="refresh()">
+        <button class="btn btn-default" ng-click="refresh()">
             <i class="fa fa-refresh fa-lg"></i> Refresh</button>
         <div class="btn-group">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +79,7 @@
 
     <div class="row">
         <div class="col-md-12 preview" ng-controller="CtrlGallery as ctrl">
-            <ng-gallery images="ctrl.images"></ng-gallery>
+            <ng-gallery images="ctrl.images" selectMode="ctrl.selectMode"></ng-gallery>
         </div>
     </div>
     <div class="overlay" ng-show="processing"></div>
@@ -179,7 +183,9 @@
             </div>
         </div>
     </div>
-<script src="js/main.js"></script>
+    <input id="txtSaveAs" class="hidden" type="file" nwdirectory />
+
+    <script src="js/main.js"></script>
 <script src="js/gallery.js"></script>
 <script src="js/foldertree.js"></script>
 <script>
