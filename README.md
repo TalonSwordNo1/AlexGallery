@@ -24,10 +24,10 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
 `npm install`
  - install browser dependencies
 `bower install`
- - **during npm install, library [lwip](https://github.com/EyalAr/lwip) install with node-gyp to build native modules,
- it work fine in node.js without nw, but with nw, we need to build with [nw-gyp](https://github.com/nwjs/nw-gyp) manually**
+ - **during npm installation, library [lwip](https://github.com/EyalAr/lwip) install with node-gyp to build native modules,
+ it work fine in node.js without nw, but within nw, we need to build with [nw-gyp](https://github.com/nwjs/nw-gyp) manually**
 	 - install nw-gyp `npm install nw-gyp -g`
-	 - go to the lwip library `cd node_module/lwip`
+	 - go to the lwip library `cd node_modules/lwip`
 	 - generate build files `nw-gyp configure`
 	 - build it `nw-gyp build`
  - back to root of app and run `nw` to launch the application
