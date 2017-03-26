@@ -65,6 +65,4 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
  - [seiyria-bootstrap-slider](https://github.com/seiyria/bootstrap-slider) A complete rewrite of the original bootstrap-slider by Stefan Petre.
  - [font-awesome](https://github.com/FortAwesome/Font-Awesome) The iconic font and CSS toolkit
 
-# About 
- As you know, images tools in Mac sucks, so I make this app and name it by my newborn boy's name.
 
