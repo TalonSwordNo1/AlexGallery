@@ -2,21 +2,22 @@
 
 [中文版README](http://hcnode.github.io/2015/08/21/alexgallery/)
 
-AlexGallery is an application of images gallery and image processing which can browse local images and photos.
-actually AlexGallery is a web application, because it is built by pure html.
-but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop application!
+AlexGallery is an application to view local photos and photos processing.
+actually this app is a web application, because it is built by pure html,
+but it is wrap by [nw](https://github.com/nwjs/nw.js), so it becomes a desktop application!
+
 
 
 ## Features
 
- - Local folder browser, list folders in tree view
- - When choose a folder, thumbnails of images under the folder show, and with two size mode small and large.
- - Batch images with batch manipulates including resize, lighten, and with three resize modes
- - Image gallery slider mode
- - Image processing, you can resize, crop, rotate, set effects (lighten, darken, blur, sharpen ...)
+ - view local photos with folder tree.
+ - different size of thumbnails of photos.
+ - processing batch photos with manipulations like resize, lighten.
+ - view photos with slider mode.
 
 # Usage
-**run source code with nw**
+**build source code with nw**
+*node.js 6.x or node.js 4.x only*
  - suppose you have install [nw](https://github.com/nwjs/nw.js) and [bower](https://github.com/bower/bower),
  if not then run `npm install nw bower -g`
  - clone Repo `git clone https://github.com/hcnode/AlexGallery` and `cd AlexGallery`
@@ -45,7 +46,7 @@ but it is wrap by [nw](https://github.com/nwjs/nw.js), so it became a desktop ap
 
 
 # Notice
- - the app only run in Mac so far, and work fine with my Mac, so I am not sure if it work ok in windows as well
+ - the app only run in Mac so far
  - the app will create folder $HOME/AlexGallery to store thumbnail of the images you explore, and nothing else will do with you pc
  - when first time enter an images folder, there will generate thumbnail of the images by size max 200px, and save them to the
  $HOME/AlexGallery/thumb which mention above, so it will need some time to show the thumbnails at the first time you enter the folder
