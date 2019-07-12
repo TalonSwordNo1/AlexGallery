@@ -2,7 +2,7 @@
 
 [中文版README](http://hcnode.github.io/2015/08/21/alexgallery/)
 
-AlexGallery is an desktop application viewing local photos and photos processing built with [nw](https://github.com/nwjs/nw.js)
+AlexGallery is an desktop application local photos viewing and processing built with [nw](https://github.com/nwjs/nw.js)
 
 
 # Usages
